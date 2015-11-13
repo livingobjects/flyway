@@ -52,7 +52,7 @@ public class LogFactory {
      */
     public static Log getLog(Class<?> clazz) {
         if (logCreator == null) {
-            FeatureDetector featureDetector = new FeatureDetector(Thread.currentThread().getContextClassLoader());
+            FeatureDetector featureDetector = new FeatureDetector(FeatureDetector.class.getClassLoader());
             if (featureDetector.isAndroidAvailable()) {
                 logCreator = new AndroidLogCreator();
             } else if (featureDetector.isSlf4jAvailable()) {
